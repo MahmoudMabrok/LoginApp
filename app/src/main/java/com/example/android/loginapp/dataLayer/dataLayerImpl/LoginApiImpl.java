@@ -1,7 +1,7 @@
 package com.example.android.loginapp.dataLayer.dataLayerImpl;
 
 import com.example.android.loginapp.dataLayer.LoginApi;
-import com.example.android.loginapp.model.Response;
+import com.example.android.loginapp.model.LoginResponse;
 import com.example.android.loginapp.service.LoginService;
 
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class LoginApiImpl implements LoginApi {
     }
 
     @Override
-    public Observable<Response> login(HashMap<String, String> body) {
+    public Observable<LoginResponse> login(HashMap<String, String> body) {
         return service.login(body);
     }
 }
