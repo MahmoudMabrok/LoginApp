@@ -1,13 +1,15 @@
 package com.example.android.loginapp.activity
 
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.android.loginapp.R
+import com.example.android.loginapp.fragment.HomeFragment
 import com.example.android.loginapp.model.User
 import com.example.android.loginapp.util.Constants
-import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+
+class HomeActivity : AppCompatActivity(), HomeFragment.HomeTransitionInterface {
 
     private lateinit var user : User
 
@@ -19,19 +21,14 @@ class HomeActivity : AppCompatActivity() {
         val bundle : Bundle = intent.extras
         user = bundle.get(Constants.USER_KEY) as User
 
-        showUser(user)
+        openFragment(HomeFragment.newInstance(user))
 
     }
 
-    /**
-     * shows user information on screen
-     */
-    private fun showUser(user : User){
-        user_name.text = user.name
-        user_age.text = user.age.toString()
-        user_college.text = user.college
-        user_department.text = user.college
-        user_expected_graduation_year.text = user.expectedGraduationYear.toString()
-        user_last_grade.text = user.lastGrade
+    override fun openFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.homeactivity_framelayout, fragment)
+                .commit()
     }
 }
