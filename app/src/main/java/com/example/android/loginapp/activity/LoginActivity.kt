@@ -10,6 +10,8 @@ class LoginActivity : AppCompatActivity() , LoginFragment.LoginTransitionInterfa
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        openFragment(LoginFragment())
     }
 
     override fun openFragment(fragment: Fragment) {
