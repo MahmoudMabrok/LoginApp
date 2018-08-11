@@ -8,5 +8,6 @@ public class Constants {
     public static final String TYPE_KEY = "type";
     public static final String SUCCESS_STATUS = "success";
     public static final String FAILURE_STATUS = "failure";
+    public static final String FAILURE_MESSAGE = "No such email or password";
 
 }
