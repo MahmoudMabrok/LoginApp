@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">LoginApp</string>
+
+    <string name="error_Login">Error occurs while Performing login, please try again later</string>
+
+    <string name="no_internet_connection">No internet connection, please connect to the internet and try again</string>
+
+    <string name="email">E_mail</string>
+
+    <string name="password">Password</string>
+
+    <string name="login">Login</string>
+
+    <string name="forgot_email_password">Please Enter your email and password</string>
+
+    <string name="invalid_email">Please enter email with valid format</string>
+
+    <string name="invalid_password">Please enter password of 6 characters or more</string>
+
+    <string name="logged_successfully">Logged Successfully</string>
+
+    <string name="you_are_logged">You are logged successfully</string>
+
+    <string name="failure_response">No such email or password</string>
 </resources>

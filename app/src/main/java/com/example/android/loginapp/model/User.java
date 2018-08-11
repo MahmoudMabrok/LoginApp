@@ -2,7 +2,9 @@ package com.example.android.loginapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
 
     @SerializedName("name")
     private String name;
