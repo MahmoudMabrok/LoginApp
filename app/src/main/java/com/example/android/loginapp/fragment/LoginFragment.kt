@@ -32,7 +32,7 @@ class LoginFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_login, container, false)
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,9 +52,6 @@ class LoginFragment : Fragment() {
                 error_text.visibility = View.INVISIBLE
             }
 
-            //show loading progress bar
-            loading_progress_bar.visibility = View.VISIBLE
-
             //check internet connection
             if(!Utils.isNetworkConnected(context)){
                 showErrorMessage(R.string.no_internet_connection)
@@ -66,7 +63,7 @@ class LoginFragment : Fragment() {
 
             //check empty email or password
             if(!loginViewModel.checkEmptyInputs(userInput.get(Constants.EMAIL_KEY).toString(), userInput.get(Constants.PASSWORD_KEY).toString())){
-                showErrorMessage(R.string.invalid_email)
+                showErrorMessage(R.string.forgot_email_password)
                 return@setOnClickListener
             }
 
@@ -81,25 +78,39 @@ class LoginFragment : Fragment() {
                 showErrorMessage(R.string.invalid_password)
                 return@setOnClickListener
             }
+
+            //show loading progress bar
+            loading_progress_bar.visibility = View.VISIBLE
+
             //Call web service
-            callLoginService(Constants.SUCCESS_STATUS)
+            callLoginService(Constants.SUCCESS_STATUS, userInput)
         }
     }
 
     override fun onPause() {
         super.onPause()
-        subscription?.unsubscribe()
+        //check if the web service has not been called hence subscription has not been initialized
+        try {
+            subscription.unsubscribe()
+        }
+        catch (e : UninitializedPropertyAccessException){
+            //nothing
+        }
     }
 
-    private fun callLoginService(status : String){
-        val input : HashMap<String, String> = HashMap()
-        input.put(Constants.TYPE_KEY, status)
-        subscription = loginViewModel.login(input).subscribe({
+    private fun callLoginService(status : String, body : HashMap<String, String>){
+        subscription = loginViewModel.login(status, body).subscribe({
+            //hide loading progress bar
+            loading_progress_bar.visibility = View.INVISIBLE
+            //Open Home Activity with user info
             val intent : Intent = Intent(context, HomeActivity::class.java)
             intent.putExtra(Constants.USER_KEY, it.user)
             startActivity(intent)
             activity?.finish()
         }, {
+            //hide loading progress bar
+            loading_progress_bar.visibility = View.INVISIBLE
+            //show error message
             showErrorMessage(R.string.failure_response)
         })
     }

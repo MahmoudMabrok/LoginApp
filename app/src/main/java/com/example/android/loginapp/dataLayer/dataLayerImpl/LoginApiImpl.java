@@ -6,6 +6,7 @@ import com.example.android.loginapp.service.LoginService;
 
 import java.util.HashMap;
 
+import retrofit2.Response;
 import rx.Observable;
 
 public class LoginApiImpl implements LoginApi {
@@ -17,7 +18,7 @@ public class LoginApiImpl implements LoginApi {
     }
 
     @Override
-    public Observable<LoginResponse> login(HashMap<String, String> body) {
-        return service.login(body);
+    public Observable<Response<LoginResponse>> login(String type, HashMap<String, String> body) {
+        return service.login(type, body);
     }
 }

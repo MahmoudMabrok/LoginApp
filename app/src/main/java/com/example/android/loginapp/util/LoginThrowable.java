@@ -2,12 +2,7 @@ package com.example.android.loginapp.util;
 
 public class LoginThrowable extends Throwable {
 
-    public LoginThrowable(String message) {
-        super(message);
+    public LoginThrowable() {
     }
 
-    @Override
-    public String getMessage() {
-        return super.getMessage();
-    }
 }

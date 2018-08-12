@@ -8,7 +8,7 @@ import rx.Observable;
 
 public interface LoginViewModel {
 
-    Observable<LoginResponse> login(HashMap<String, String> body);
+    Observable<LoginResponse> login(String type, HashMap<String, String> body);
     Boolean checkEmptyInputs(String email, String password);
     Boolean isValidEmail(String email);
     Boolean isValidPassword(String password);
