@@ -10,5 +10,7 @@ public class Constants {
     public static final String SUCCESS_STATUS = "success";
     public static final String FAILURE_STATUS = "failure";
     public static final int OK_STATUS_CODE = 200;
+    public static final int CONNECT_TIMEOUT = 10;
+    public static final int READ_TIMEOUT = 20;
 
 }
