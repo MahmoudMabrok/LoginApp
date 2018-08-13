@@ -22,4 +22,16 @@
     <string name="you_are_logged">You are logged successfully</string>
 
     <string name="failure_response">No such email or password</string>
+
+    <string name="name">Name: </string>
+
+    <string name="age">Age: </string>
+
+    <string name="college">College: </string>
+
+    <string name="department">Department: </string>
+
+    <string name="expected_graduation_year">Expected Graduation Year: </string>
+
+    <string name="last_grade">Last Grade: </string>
 </resources>

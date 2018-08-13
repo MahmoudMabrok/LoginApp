@@ -45,7 +45,7 @@ class HomeFragment : Fragment(){
         user_name.text = user.name
         user_age.text = user.age.toString()
         user_college.text = user.college
-        user_department.text = user.college
+        user_department.text = user.department
         user_expected_graduation_year.text = user.expectedGraduationYear.toString()
         user_last_grade.text = user.lastGrade
     }
