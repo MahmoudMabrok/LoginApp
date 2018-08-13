@@ -20,12 +20,15 @@ class LoginViewModelImpl : LoginViewModel {
 
 
     override fun login(type: String?, body: HashMap<String, String>?): Observable<LoginResponse> {
-        return api.login(type, body).flatMap { Response ->
+        return api.login(type, body)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .flatMap { Response ->
             if (Response.code() == Constants.OK_STATUS_CODE) {
                 Observable.just(Response.body())
             } else {
                 Observable.error(LoginThrowable())
-            }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            }
         }
     }
 
