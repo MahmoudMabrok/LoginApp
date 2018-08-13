@@ -34,4 +34,6 @@
     <string name="expected_graduation_year">Expected Graduation Year: </string>
 
     <string name="last_grade">Last Grade: </string>
+
+    <string name="successful_response">Successful Response</string>
 </resources>

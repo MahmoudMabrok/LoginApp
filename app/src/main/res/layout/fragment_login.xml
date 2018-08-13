@@ -35,6 +35,12 @@
             android:textColor="@color/red"
             android:visibility="invisible"/>
 
+        <CheckBox
+            android:id="@+id/success_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/successful_response"/>
+
         <Button
             android:id="@+id/login_btn"
             android:layout_width="wrap_content"

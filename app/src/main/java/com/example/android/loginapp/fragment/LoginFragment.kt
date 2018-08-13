@@ -82,8 +82,15 @@ class LoginFragment : Fragment() {
             //show loading progress bar
             loading_progress_bar.visibility = View.VISIBLE
 
+            //decide on response status
+            val status : String
+            if(success_checkbox.isChecked)
+                status = Constants.SUCCESS_STATUS
+            else
+                status = Constants.FAILURE_STATUS
+
             //Call web service
-            callLoginService(Constants.SUCCESS_STATUS, userInput)
+            callLoginService(status, userInput)
         }
     }
 
